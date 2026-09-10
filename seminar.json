@@ -1,6 +1,6 @@
 {
   "settings": {
-    "term": "2026 秋季学期 · 排期草案",
+    "term": "2026-2027学年第一学期",
     "shortTime": "周四 14:00–17:00",
     "longTime": "周五 14:00–16:00",
     "location": "地点以每次安排为准",
@@ -11,41 +11,141 @@
     "longWeeks": 14
   },
   "members": [
-    { "id": 1, "name": "陈同学", "role": "Postdoc", "area": "Elliptic PDE", "group": "A" },
-    { "id": 2, "name": "林同学", "role": "PhD", "area": "Geometric Analysis", "group": "A" },
-    { "id": 3, "name": "周同学", "role": "PhD", "area": "Harmonic Analysis", "group": "A" },
-    { "id": 4, "name": "王同学", "role": "Postdoc", "area": "Calculus of Variations", "group": "B" },
-    { "id": 5, "name": "李同学", "role": "PhD", "area": "Free Boundary Problems", "group": "B" },
-    { "id": 6, "name": "赵同学", "role": "Master", "area": "Nonlinear PDE", "group": "B" },
-    { "id": 7, "name": "杨同学", "role": "PhD", "area": "Subelliptic Equations", "group": "C" },
-    { "id": 8, "name": "吴同学", "role": "PhD", "area": "Carnot Groups", "group": "C" },
-    { "id": 9, "name": "黄同学", "role": "Master", "area": "Metric Measure Spaces", "group": "C" },
-    { "id": 10, "name": "许同学", "role": "PhD", "area": "Probability & Analysis", "group": "D" },
-    { "id": 11, "name": "孙同学", "role": "Master", "area": "Random Walk Spaces", "group": "D" }
+    {
+      "id": 1,
+      "name": "沈田鋆",
+      "role": "Postdoc",
+      "area": "Harmonic analysis",
+      "group": "D"
+    },
+    {
+      "id": 2,
+      "name": "孙一兵",
+      "role": "PhD",
+      "area": "Analysis",
+      "group": "C"
+    },
+    {
+      "id": 3,
+      "name": "温叶培",
+      "role": "PhD",
+      "area": "Analysis",
+      "group": "B"
+    },
+    {
+      "id": 4,
+      "name": "郑苏婷",
+      "role": "PhD",
+      "area": "Degenerated parabolic PDEs",
+      "group": "A"
+    },
+    {
+      "id": 5,
+      "name": "时荣臻",
+      "role": "PhD",
+      "area": "Elliptic PDEs",
+      "group": "A"
+    },
+    {
+      "id": 6,
+      "name": "肖熠扬",
+      "role": "PhD",
+      "area": "Elliptic PDEs",
+      "group": "A"
+    },
+    {
+      "id": 7,
+      "name": "胡家豪",
+      "role": "PhD",
+      "area": "Analysis",
+      "group": "C"
+    },
+    {
+      "id": 8,
+      "name": "梁宇栋",
+      "role": "PhD",
+      "area": "Analysis",
+      "group": "D"
+    },
+    {
+      "id": 9,
+      "name": "王乔",
+      "role": "Master",
+      "area": "Metric Measure Spaces",
+      "group": "B"
+    },
+    {
+      "id": 10,
+      "name": "汤翔宇",
+      "role": "Master",
+      "area": "Probability & Analysis",
+      "group": "B"
+    },
+    {
+      "id": 11,
+      "name": "刘鑫扬",
+      "role": "Master",
+      "area": "Analysis",
+      "group": "C"
+    }
   ],
   "groups": [
-    { "id": "A", "direction": "Elliptic & Geometric PDE", "paper": "Stable solutions and geometric inequalities", "sessions": 4 },
-    { "id": "B", "direction": "Variational & Free Boundary", "paper": "A selected paper on one-phase free boundaries", "sessions": 4 },
-    { "id": "C", "direction": "Subelliptic Analysis", "paper": "Regularity theory on Carnot groups", "sessions": 3 },
-    { "id": "D", "direction": "Metric Spaces & Diffusion", "paper": "Variational problems in random walk spaces", "sessions": 3 }
+    {
+      "id": "A",
+      "direction": "Elliptic & Parabolic PDEs",
+      "paper": "Pending",
+      "sessions": 4
+    },
+    {
+      "id": "B",
+      "direction": "Analysis on metric spaces",
+      "paper": "Pending",
+      "sessions": 4
+    },
+    {
+      "id": "C",
+      "direction": "Harmonic analysis",
+      "paper": "Pending",
+      "sessions": 3
+    },
+    {
+      "id": "D",
+      "direction": "Independent",
+      "paper": "Pending\n",
+      "sessions": 3
+    }
   ],
   "shortTalks": [
-    { "id": 101, "week": 1, "date": "2026-09-10", "speaker": "陈同学", "title": "A quick review of a recent elliptic PDE paper", "type": "Paper review", "location": "数学楼 401" },
-    { "id": 102, "week": 1, "date": "2026-09-10", "speaker": "王同学", "title": "Recent progress on a variational problem", "type": "Research progress", "location": "数学楼 401" },
-    { "id": 103, "week": 1, "date": "2026-09-10", "speaker": "杨同学", "title": "An introduction to stable solutions on Carnot groups", "type": "Paper review", "location": "数学楼 401" },
-    { "id": 104, "week": 2, "date": "2026-09-17", "speaker": "林同学", "title": "Geometric flows and weak formulations", "type": "Paper review", "location": "数学楼 305" },
-    { "id": 105, "week": 2, "date": "2026-09-17", "speaker": "待安排", "title": "", "type": "", "location": "地点待定" },
-    { "id": 106, "week": 2, "date": "2026-09-17", "speaker": "待安排", "title": "", "type": "", "location": "地点待定" }
+    {
+      "id": 101,
+      "week": 1,
+      "date": "2026-09-10",
+      "speaker": "待安排",
+      "title": "Beginning-of-Semester Research Updates and Plans",
+      "type": "Research progress",
+      "location": "后主楼1124"
+    },
+    {
+      "id": 102,
+      "week": 1,
+      "date": "2026-09-11",
+      "speaker": "待安排",
+      "title": "Beginning-of-Semester Research Updates and Plans",
+      "type": "Research progress",
+      "location": "后主楼1220"
+    }
   ],
-  "longTalks": [
-    { "id": 201, "week": 1, "date": "2026-09-11", "group": "A", "speaker": "林同学", "title": "Background, main theorem and proof architecture", "location": "数学楼 401" },
-    { "id": 202, "week": 2, "date": "2026-09-18", "group": "A", "speaker": "陈同学", "title": "Core estimates and stability inequality", "location": "数学楼 305" },
-    { "id": 203, "week": 3, "date": "2026-09-25", "group": "A", "speaker": "周同学", "title": "Completion of the proof and discussion", "location": "地点待定" },
-    { "id": 204, "week": 4, "date": "2026-10-02", "group": "B", "speaker": "王同学", "title": "Problem setting and variational framework", "location": "数学楼 401" },
-    { "id": 205, "week": 5, "date": "2026-10-09", "group": "B", "speaker": "待安排", "title": "", "location": "地点待定" }
-  ],
+  "longTalks": [],
   "lectures": [
-    { "id": 301, "week": 1, "date": "2026-09-10", "time": "10:00–11:00", "speaker": "张教授（示例）", "affiliation": "示例大学", "title": "A Sample Departmental Colloquium", "location": "数学楼报告厅" },
-    { "id": 302, "week": 2, "date": "2026-09-16", "time": "15:00–16:00", "speaker": "李教授（示例）", "affiliation": "示例研究所", "title": "An Example Lecture in Geometric Analysis", "location": "地点待定" }
+    {
+      "week": 1,
+      "date": "2026-09-12",
+      "time": "9:00 - 10:30",
+      "speaker": "刘奕",
+      "affiliation": "加拿大约克大学",
+      "location": "ZOOM 82710296579",
+      "title": "AI时代 我们（也许）应该怎样做研究？",
+      "id": 1789010058107
+    }
   ]
 }
