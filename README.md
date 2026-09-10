@@ -6,7 +6,15 @@
 - `admin.html`：管理员编辑页面，修改先保存为当前浏览器中的草稿；
 - `data/seminar.json`：GitHub Pages 实际展示的正式排期数据。
 
-公开页面包含 Short Talks、Long Talks、Lectures、本周学术活动总览、subgroup 和成员信息。Short Talk 默认为周四 14:00–17:00，Long Talk 默认为周五 14:00–16:00；新增场次的日期会根据学期第一周自动预填，之后仍可修改。
+公开页面包含 Fundamental、Short Talks、Long Talks、Lectures、本周学术活动总览、subgroup 和成员信息。
+
+- Fundamental：周一 14:00–17:00，系统讲解专业方向的教材或专著；
+- Short Talk：周四 14:00–17:00；
+- Long Talk：周五 14:00–16:00。
+
+三类组内讨论班新增场次的日期都会根据学期第一周自动预填；修改“周次”时，日期会立即同步到对应周的周一、周四或周五，之后仍可手动修改。Lecture 修改周次时会保留当前所选日期的星期。
+
+管理员可在四个类别中分别点击“本周暂停”。暂停状态会显示在公开页面和本周学术活动总览中，已有排期记录仍会保留；再次点击“恢复本周”即可取消暂停。
 
 ## 第一次发布到 GitHub Pages
 
@@ -28,7 +36,7 @@
 ## 每次修改排期
 
 1. 登录 GitHub，然后打开 `admin.html`。
-2. 使用页面中的“学期设置”“安排 Short Talk”“安排 Long Talk”“记录 Lecture”等按钮编辑。
+2. 使用页面中的“学期设置”“安排 Fundamental”“安排 Short Talk”“安排 Long Talk”“记录 Lecture”等按钮编辑。
 3. 每次点击保存，修改只进入当前浏览器的本机草稿，尚未公开。
 4. 检查无误后点击 **复制 JSON**。
 5. 回到 GitHub 仓库，打开 `data/seminar.json`，点击右上角铅笔按钮。

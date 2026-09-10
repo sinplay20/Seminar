@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="纯数学课题组 Seminar 的 Short Talk、Long Talk、Lectures 与本周活动排期工作台。">
+  <meta name="description" content="纯数学课题组 Fundamental、Short Talk、Long Talk、Lectures 与本周活动排期工作台。">
   <title>Pure Mathematics Seminar</title>
   <style>
     :root {
@@ -15,11 +15,13 @@
       --blue: #2e5f8a;
       --teal: #1f766d;
       --rust: #a24d2d;
+      --gold: #936d20;
       --line: #d8d6cf;
       --line-dark: #bcc4cc;
       --soft-blue: #e7eef5;
       --soft-teal: #e4f0ed;
       --soft-rust: #f5e9e3;
+      --soft-gold: #f4ecd8;
       --shadow: 0 18px 55px rgba(21, 42, 70, .09);
       --radius: 14px;
     }
@@ -237,8 +239,9 @@
     .weekly-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
     .weekly-heading h2 { font-size: clamp(1.45rem, 3vw, 1.85rem); }
     .week-badge { padding: 5px 10px; border-radius: 999px; color: #214f76; background: var(--soft-blue); font-size: .78rem; font-weight: 850; }
-    .weekly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .weekly-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
     .weekly-module { min-width: 0; padding: 17px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 11px; background: white; }
+    .weekly-module.fundamental { border-top-color: var(--gold); }
     .weekly-module.long { border-top-color: var(--teal); }
     .weekly-module.lecture { border-top-color: var(--rust); }
     .weekly-module-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
@@ -250,6 +253,7 @@
     .weekly-title { display: block; color: var(--ink); font-size: .9rem; font-weight: 720; overflow-wrap: anywhere; }
     .weekly-meta { display: block; margin-top: 4px; color: var(--muted); font-size: .77rem; }
     .weekly-empty { padding: 18px 0 4px; color: var(--muted); font-size: .86rem; }
+    .weekly-paused { margin-top: 6px; padding: 14px 12px; border: 1px solid #d8bd80; border-radius: 9px; color: #73520f; background: var(--soft-gold); font-size: .88rem; font-weight: 800; text-align: center; }
 
     .section { scroll-margin-top: 84px; margin-top: 46px; }
     .section-head {
@@ -264,9 +268,12 @@
     h2 { margin: 0; color: var(--navy); font-size: clamp(1.55rem, 3vw, 2rem); letter-spacing: -.025em; }
     .section-description { max-width: 640px; margin: 9px 0 0; color: var(--muted); font-size: .93rem; }
     .section-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .pause-notice { display: none; margin-top: 16px; padding: 11px 14px; border: 1px solid #d8bd80; border-radius: 10px; color: #73520f; background: #fbf3df; font-weight: 780; }
+    .pause-notice.show { display: block; }
 
-    .track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+    .track-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 18px; }
     .track-card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .track-card.fundamental { border-top: 4px solid var(--gold); }
     .track-card.short { border-top: 4px solid var(--blue); }
     .track-card.long { border-top: 4px solid var(--teal); }
     .track-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
@@ -275,6 +282,7 @@
     .tag { padding: 5px 9px; border-radius: 999px; white-space: nowrap; font-size: .76rem; font-weight: 800; }
     .tag.blue { color: #214f76; background: var(--soft-blue); }
     .tag.teal { color: #185e57; background: var(--soft-teal); }
+    .tag.gold { color: #71500f; background: var(--soft-gold); }
     .track-copy { display: grid; gap: 17px; margin-top: 22px; }
     .track-block { padding-top: 15px; border-top: 1px solid #e4e1da; }
     .track-label { display: block; margin-bottom: 7px; color: var(--navy); font-size: .8rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
@@ -392,10 +400,11 @@
     @media (max-width: 980px) {
       .groups-grid { grid-template-columns: 1fr 1fr; }
       .members-grid { grid-template-columns: 1fr 1fr; }
+      .track-grid { grid-template-columns: 1fr; }
       .weekly-grid { grid-template-columns: 1fr; }
       .schedule-row { grid-template-columns: 68px 110px 130px minmax(200px, 1fr) 80px; gap: 10px; }
       body.public-mode .schedule-row { grid-template-columns: 68px 110px 130px minmax(200px, 1fr); }
-      nav a:nth-child(1), nav a:nth-child(5) { display: none; }
+      nav a:nth-child(1), nav a:nth-child(6) { display: none; }
     }
 
     @media (max-width: 700px) {
@@ -403,6 +412,7 @@
       .brand span:last-child { display: none; }
       nav { gap: 0; }
       nav a { padding: 8px; font-size: .82rem; }
+      nav a:nth-child(5) { display: none; }
       .masthead { min-height: 300px; padding: 29px 24px; }
       .toolbar, .admin-banner, .weekly-head, .section-head, footer { align-items: stretch; flex-direction: column; }
       .admin-actions { justify-content: stretch; }
@@ -442,6 +452,7 @@
       </a>
       <nav aria-label="页面导航">
         <a href="#overview">概览</a>
+        <a href="#fundamental">Fundamental</a>
         <a href="#short-talks">Short Talks</a>
         <a href="#long-talks">Long Talks</a>
         <a href="#lectures">Lectures</a>
@@ -457,6 +468,10 @@
         <h1>Pure Mathematics<br>Seminar</h1>
         <p class="term-title" id="termLabel">2026 秋季学期 · 排期草案</p>
         <div class="meta-row">
+          <span class="meta-chip" id="fundamentalTimeChip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Z"/><path d="M4 18.5A2.5 2.5 0 0 1 6.5 16H20"/></svg>
+            Fundamental · 周一 14:00–17:00
+          </span>
           <span class="meta-chip" id="shortTimeChip">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
             Short Talk · 周四 14:00–17:00
@@ -523,6 +538,7 @@
         <button class="button secondary small" data-open="semester">学期设置</button>
         <button class="button secondary small" data-open="settings">编辑时间地点</button>
         <button class="button secondary small" data-open="member">添加成员</button>
+        <button class="button small" data-open="fundamental">安排 Fundamental</button>
         <button class="button small" data-open="short">安排 Short Talk</button>
         <button class="button small" data-open="long">安排 Long Talk</button>
         <button class="button small" data-open="lecture">记录 Lecture</button>
@@ -532,12 +548,41 @@
     <section class="section" aria-labelledby="format-title">
       <div class="section-head">
         <div>
-          <p class="section-kicker">Two-track format</p>
-          <h2 id="format-title">两条互补的报告轨道</h2>
-          <p class="section-description">Short Talk 服务于全组范围内的快速交流，Long Talk 服务于方向小组内部的系统研读；两者分别承担“拓展广度”和“建立深度”的任务。</p>
+          <p class="section-kicker">Three-track format</p>
+          <h2 id="format-title">三条互补的讨论班轨道</h2>
+          <p class="section-description">Fundamental 建立专业基础，Short Talk 促进全组快速交流，Long Talk 支持方向小组对 selected paper 的深度研读。</p>
         </div>
       </div>
       <div class="track-grid">
+        <article class="track-card fundamental">
+          <div class="track-top">
+            <div><h3>Fundamental</h3><p>Systematic reading of books and monographs</p></div>
+            <span class="tag gold">基础研读</span>
+          </div>
+          <div class="track-copy">
+            <div class="track-block">
+              <span class="track-label">形式</span>
+              <ul class="track-list">
+                <li>围绕各专业方向的重要教材或专著，按照章节顺序进行连续、系统的讲解。</li>
+                <li>每次根据内容安排一位或多位报告人，说明基本定义、典型例子、核心定理及必要证明。</li>
+                <li>周一 14:00–17:00 进行，可根据章节结构分段报告与讨论。</li>
+              </ul>
+            </div>
+            <div class="track-block">
+              <span class="track-label">目标</span>
+              <ul class="track-list">
+                <li>补齐成员进入专业方向所需的共同基础、标准工具和经典例子。</li>
+                <li>把零散的背景知识组织为可持续使用的理论框架。</li>
+                <li>为后续论文研读、研究问题和 Long Talk 建立必要的预备知识。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="track-details">
+            <div class="track-detail"><b>3h</b><span>Monday session</span></div>
+            <div class="track-detail"><b>Books</b><span>textbooks / monographs</span></div>
+            <div class="track-detail"><b>Core</b><span>definitions & theorems</span></div>
+          </div>
+        </article>
         <article class="track-card short">
           <div class="track-top">
             <div><h3>Short Talk</h3><p>Quick paper review / research progress</p></div>
@@ -598,6 +643,22 @@
       </div>
     </section>
 
+    <section class="section" id="fundamental" aria-labelledby="fundamental-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Foundational reading</p>
+          <h2 id="fundamental-title">Fundamental</h2>
+          <p class="section-description">周一下午系统讲解专业方向的重要教材与专著，按章节记录书目、讲解内容、报告人和实际地点。</p>
+        </div>
+        <div class="section-actions">
+          <button class="button secondary admin-only" type="button" data-pause="fundamental">本周暂停</button>
+          <button class="button admin-only" data-open="fundamental">＋ 新增场次</button>
+        </div>
+      </div>
+      <div class="pause-notice" id="fundamentalPauseNotice" role="status"></div>
+      <div class="schedule-shell" id="fundamentalSchedule"></div>
+    </section>
+
     <section class="section" id="short-talks" aria-labelledby="short-title">
       <div class="section-head">
         <div>
@@ -605,8 +666,12 @@
           <h2 id="short-title">Short Talks</h2>
           <p class="section-description">每位报告人原则上使用 45–50 分钟报告，预留 10–15 分钟讨论。下表展示示例场次与待安排入口。</p>
         </div>
-        <button class="button admin-only" data-open="short">＋ 新增报告</button>
+        <div class="section-actions">
+          <button class="button secondary admin-only" type="button" data-pause="short">本周暂停</button>
+          <button class="button admin-only" data-open="short">＋ 新增报告</button>
+        </div>
       </div>
+      <div class="pause-notice" id="shortPauseNotice" role="status"></div>
       <div class="schedule-shell" id="shortSchedule"></div>
     </section>
 
@@ -618,10 +683,12 @@
           <p class="section-description">每组共同阅读整篇论文，再按背景与框架、核心论证、技术细节和总结讨论划分报告。</p>
         </div>
         <div class="section-actions">
+          <button class="button secondary admin-only" type="button" data-pause="long">本周暂停</button>
           <button class="button secondary admin-only" data-open="group">＋ 新增 subgroup</button>
           <button class="button admin-only" data-open="long">＋ 新增场次</button>
         </div>
       </div>
+      <div class="pause-notice" id="longPauseNotice" role="status"></div>
       <div class="groups-grid" id="groupsGrid"></div>
       <div class="schedule-shell" id="longSchedule"></div>
     </section>
@@ -633,8 +700,12 @@
           <h2 id="lectures-title">Lectures</h2>
           <p class="section-description">记录本组计划参加的校内外学术报告、Colloquium、Workshop talk 等活动；时间、报告人、题目与地点均可独立填写和修改。</p>
         </div>
-        <button class="button admin-only" data-open="lecture">＋ 记录报告</button>
+        <div class="section-actions">
+          <button class="button secondary admin-only" type="button" data-pause="lecture">本周暂停</button>
+          <button class="button admin-only" data-open="lecture">＋ 记录报告</button>
+        </div>
       </div>
+      <div class="pause-notice" id="lecturePauseNotice" role="status"></div>
       <div class="schedule-shell" id="lectureSchedule"></div>
     </section>
 
@@ -677,6 +748,7 @@
     const exampleData = {
       settings: {
         term: '2026 秋季学期 · 排期草案',
+        fundamentalTime: '周一 14:00–17:00',
         shortTime: '周四 14:00–17:00',
         longTime: '周五 14:00–16:00',
         location: '地点以每次安排为准',
@@ -705,6 +777,10 @@
         { id: 'C', direction: 'Subelliptic Analysis', paper: 'Regularity theory on Carnot groups', sessions: 3 },
         { id: 'D', direction: 'Metric Spaces & Diffusion', paper: 'Variational problems in random walk spaces', sessions: 3 }
       ],
+      fundamentalTalks: [
+        { id: 401, week: 1, date: '2026-09-07', speaker: '赵同学', book: 'L. C. Evans, Partial Differential Equations（示例）', title: 'Chapter 2: Second-order elliptic equations', location: '数学楼 401' },
+        { id: 402, week: 2, date: '2026-09-14', speaker: '待安排', book: '书目待定', title: '', location: '地点待定' }
+      ],
       shortTalks: [
         { id: 101, week: 1, date: '2026-09-10', speaker: '陈同学', title: 'A quick review of a recent elliptic PDE paper', type: 'Paper review', location: '数学楼 401' },
         { id: 102, week: 1, date: '2026-09-10', speaker: '王同学', title: 'Recent progress on a variational problem', type: 'Research progress', location: '数学楼 401' },
@@ -723,7 +799,8 @@
       lectures: [
         { id: 301, week: 1, date: '2026-09-10', time: '10:00–11:00', speaker: '张教授（示例）', affiliation: '示例大学', title: 'A Sample Departmental Colloquium', location: '数学楼报告厅' },
         { id: 302, week: 2, date: '2026-09-16', time: '15:00–16:00', speaker: '李教授（示例）', affiliation: '示例研究所', title: 'An Example Lecture in Geometric Analysis', location: '地点待定' }
-      ]
+      ],
+      pauses: []
     };
 
     const clone = value => JSON.parse(JSON.stringify(value));
@@ -751,9 +828,11 @@
         settings,
         members: Array.isArray(saved.members) ? saved.members : base.members,
         groups: Array.isArray(saved.groups) ? saved.groups : base.groups,
+        fundamentalTalks: Array.isArray(saved.fundamentalTalks) ? saved.fundamentalTalks : base.fundamentalTalks,
         shortTalks: Array.isArray(saved.shortTalks) ? saved.shortTalks : base.shortTalks,
         longTalks: Array.isArray(saved.longTalks) ? saved.longTalks : base.longTalks,
-        lectures: Array.isArray(saved.lectures) ? saved.lectures : base.lectures
+        lectures: Array.isArray(saved.lectures) ? saved.lectures : base.lectures,
+        pauses: Array.isArray(saved.pauses) ? saved.pauses : base.pauses
       };
     }
 
@@ -903,13 +982,16 @@
     function render() {
       const s = data.settings;
       document.getElementById('termLabel').textContent = s.term;
+      document.getElementById('fundamentalTimeChip').lastChild.textContent = ' Fundamental · ' + s.fundamentalTime;
       document.getElementById('shortTimeChip').lastChild.textContent = ' Short Talk · ' + s.shortTime;
       document.getElementById('longTimeChip').lastChild.textContent = ' Long Talk · ' + s.longTime;
       document.getElementById('locationChip').lastChild.textContent = ' ' + s.location;
       document.getElementById('teachingWeeksChip').lastChild.textContent = ` ${s.teachingWeeks} 个教学周`;
       document.getElementById('groupCountTag').textContent = data.groups.length;
       document.getElementById('currentWeekLabel').textContent = 'Week ' + getCurrentWeek();
+      renderPauseStates();
       renderWeeklyOverview();
+      renderFundamentalTalks();
       renderShortTalks();
       renderGroups();
       renderLongTalks();
@@ -918,7 +1000,8 @@
     }
 
     function scheduleHeader(kind) {
-      return `<div class="schedule-row header"><span>周次</span><span>日期</span><span>${kind === 'long' ? 'Subgroup' : '报告人'}</span><span>报告题目</span>${isAdmin ? '<span>操作</span>' : ''}</div>`;
+      const topicLabel = kind === 'fundamental' ? '章节 / 讲解内容' : '报告题目';
+      return `<div class="schedule-row header"><span>周次</span><span>日期</span><span>${kind === 'long' ? 'Subgroup' : '报告人'}</span><span>${topicLabel}</span>${isAdmin ? '<span>操作</span>' : ''}</div>`;
     }
 
     function actionButtons(type, id) {
@@ -935,30 +1018,104 @@
       const byWeek = items => [...items]
         .filter(item => Number(item.week) === currentWeek)
         .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')) || a.id - b.id);
-      const module = (title, className, items, renderItem) => `<article class="weekly-module ${className}">
-        <div class="weekly-module-head"><h3>${title}</h3><span class="weekly-count">${items.length} ${items.length === 1 ? 'event' : 'events'}</span></div>
-        ${items.length ? items.map(renderItem).join('') : '<div class="weekly-empty">本周暂无安排</div>'}
+      const module = (title, className, items, renderItem, paused = false) => `<article class="weekly-module ${className}">
+        <div class="weekly-module-head"><h3>${title}</h3><span class="weekly-count">${paused ? '已暂停' : `${items.length} ${items.length === 1 ? 'event' : 'events'}`}</span></div>
+        ${paused ? '<div class="weekly-paused">本周暂停</div>' : (items.length ? items.map(renderItem).join('') : '<div class="weekly-empty">本周暂无安排</div>')}
       </article>`;
 
+      const fundamentalItems = byWeek(data.fundamentalTalks);
       const shortItems = byWeek(data.shortTalks);
       const longItems = byWeek(data.longTalks);
       const lectureItems = byWeek(data.lectures);
       target.innerHTML =
+        module('Fundamental', 'fundamental', fundamentalItems, item => `<div class="weekly-event">
+          <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(data.settings.fundamentalTime)}</span>
+          <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '讲解内容待定')}</span>
+          <span class="weekly-meta">${displayPart(item.speaker, '报告人待安排', ['待安排'])} · ${displayPart(item.book, '书目待定', ['书目待定'])} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
+        </div>`, Boolean(getPause('fundamental', currentWeek))) +
         module('Short Talks', 'short', shortItems, item => `<div class="weekly-event">
           <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(data.settings.shortTime)}</span>
           <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '题目待定')}</span>
           <span class="weekly-meta">${displayPart(item.speaker, '报告人待安排', ['待安排'])} · ${displayPart(item.type, '类型待定')} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
-        </div>`) +
+        </div>`, Boolean(getPause('short', currentWeek))) +
         module('Long Talks', 'long', longItems, item => `<div class="weekly-event">
           <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(data.settings.longTime)}</span>
           <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '题目待定')}</span>
           <span class="weekly-meta">Group ${escapeHTML(item.group || '—')} · ${displayPart(item.speaker, '报告人待安排', ['待安排'])} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
-        </div>`) +
+        </div>`, Boolean(getPause('long', currentWeek))) +
         module('Lectures', 'lecture', lectureItems, item => `<div class="weekly-event">
           <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(item.time || '时间待定')}</span>
           <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '题目待定')}</span>
           <span class="weekly-meta">${displayPart(item.speaker, '报告人待定')} · ${displayPart(item.affiliation, '单位待定')} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
-        </div>`);
+        </div>`, Boolean(getPause('lecture', currentWeek)));
+    }
+
+    const categoryLabels = {
+      fundamental: 'Fundamental',
+      short: 'Short Talk',
+      long: 'Long Talk',
+      lecture: 'Lectures'
+    };
+
+    function getPause(category, week = getCurrentWeek()) {
+      return data.pauses.find(item => item.category === category && Number(item.week) === Number(week));
+    }
+
+    function renderPauseStates() {
+      const week = getCurrentWeek();
+      const configs = [
+        ['fundamental', 'fundamentalPauseNotice'],
+        ['short', 'shortPauseNotice'],
+        ['long', 'longPauseNotice'],
+        ['lecture', 'lecturePauseNotice']
+      ];
+      configs.forEach(([category, noticeId]) => {
+        const paused = Boolean(getPause(category, week));
+        const notice = document.getElementById(noticeId);
+        notice.classList.toggle('show', paused);
+        notice.textContent = paused
+          ? `Week ${week} · 本周暂停${isAdmin ? '；已有排期仍保留' : ''}`
+          : '';
+        document.querySelectorAll(`[data-pause="${category}"]`).forEach(button => {
+          button.textContent = paused ? '恢复本周' : '本周暂停';
+        });
+      });
+    }
+
+    function toggleCurrentWeekPause(category) {
+      if (!isAdmin || !categoryLabels[category]) return;
+      const week = getCurrentWeek();
+      const existing = getPause(category, week);
+      if (existing) {
+        data.pauses = data.pauses.filter(item => item !== existing);
+        saveData(`${categoryLabels[category]} 已恢复本周安排`);
+      } else {
+        data.pauses.push({ id: Date.now(), week, category });
+        saveData(`${categoryLabels[category]} 已设为本周暂停`);
+      }
+    }
+
+    function renderFundamentalTalks() {
+      const target = document.getElementById('fundamentalSchedule');
+      if (!data.fundamentalTalks.length) {
+        target.innerHTML = '<div class="empty-state">尚未安排 Fundamental。</div>';
+        return;
+      }
+      const rows = [...data.fundamentalTalks].sort((a,b) => a.week - b.week || a.id - b.id).map(item => {
+        const speakerKnown = isKnown(item.speaker, ['待安排']);
+        const titleKnown = isKnown(item.title);
+        return `<div class="schedule-row">
+          <span class="week">Week ${escapeHTML(item.week)}</span>
+          <span class="date">${escapeHTML(formatDate(item.date))}</span>
+          <span class="speaker ${speakerKnown ? '' : 'pending'}">${escapeHTML(speakerKnown ? item.speaker : '报告人待安排')}</span>
+          <span class="topic">
+            <span class="topic-title ${titleKnown ? '' : 'pending'}">${escapeHTML(titleKnown ? item.title : '讲解内容待定')}</span>
+            <span class="topic-meta">${displayPart(item.book, '书目待定', ['书目待定'])} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
+          </span>
+          ${actionButtons('fundamental', item.id)}
+        </div>`;
+      }).join('');
+      target.innerHTML = scheduleHeader('fundamental') + rows;
     }
 
     function renderShortTalks() {
@@ -1097,8 +1254,9 @@
       } else if (type === 'settings') {
         item = data.settings;
         dialogTitle.textContent = '编辑活动设置';
-        dialogHint.textContent = '更新两个 Seminar 序列的固定时间、地点说明与预计排期周数。';
+        dialogHint.textContent = '更新三条组内讨论班轨道的固定时间、地点说明与预计排期周数。';
         form.innerHTML = `<div class="field-grid">
+          ${field('fundamentalTime', 'Fundamental 时间', item.fundamentalTime)}
           ${field('shortTime', 'Short Talk 时间', item.shortTime)}
           ${field('longTime', 'Long Talk 时间', item.longTime)}
           ${field('location', '地点说明', item.location, {full: true})}
@@ -1123,6 +1281,18 @@
           ${field('direction', '研究方向', item.direction, {full:true})}
           ${field('paper', 'Selected paper', item.paper, {textarea:true, full:true})}
           ${field('sessions', '报告次数', item.sessions, {type:'number', min:1})}
+        </div>${formButtons(Boolean(id))}`;
+      } else if (type === 'fundamental') {
+        item = id ? data.fundamentalTalks.find(x => x.id === Number(id)) : {week:getCurrentWeek(), date:semesterWeekDate(getCurrentWeek(), 1), speaker:'待安排', book:'', title:'', location:'地点待定'};
+        dialogTitle.textContent = id ? '编辑 Fundamental' : '安排 Fundamental';
+        dialogHint.textContent = id ? '修改本次教材或专著讲解的日期与信息。' : '日期已预填为本教学周周一，可直接修改。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('week', '周次', item.week, {type:'number', min:1})}
+          ${field('date', '日期', toDateInputValue(item.date), {type:'date'})}
+          ${field('speaker', '报告人', item.speaker, {select:[{value:'待安排',label:'待安排'}, ...data.members.map(m => ({value:m.name,label:m.name}))]})}
+          ${field('location', '本次地点', item.location || '地点待定')}
+          ${field('book', '书名 / 专著', item.book, {full:true, required:false})}
+          ${field('title', '本次章节或讲解内容', item.title, {textarea:true, full:true, required:false})}
         </div>${formButtons(Boolean(id))}`;
       } else if (type === 'short') {
         item = id ? data.shortTalks.find(x => x.id === Number(id)) : {week:getCurrentWeek(), date:semesterWeekDate(getCurrentWeek(), 4), speaker:'待安排', title:'', type:'Paper review'};
@@ -1163,6 +1333,7 @@
         </div>${formButtons(Boolean(id))}`;
       }
       bindFormControls();
+      bindWeekDateSync(type);
       dialog.showModal();
       setTimeout(() => form.querySelector('input, select, textarea')?.focus(), 0);
     }
@@ -1171,6 +1342,32 @@
       document.getElementById('formCancel').addEventListener('click', () => dialog.close());
       const deleteButton = document.getElementById('formDelete');
       if (deleteButton) deleteButton.addEventListener('click', () => deleteItem(editorState.type, editorState.id));
+    }
+
+    function weekdayFromISO(value) {
+      const text = String(value || '');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return 1;
+      const [year, month, day] = text.split('-').map(Number);
+      const weekday = new Date(year, month - 1, day).getDay();
+      return weekday === 0 ? 7 : weekday;
+    }
+
+    function bindWeekDateSync(type) {
+      const weekInput = form.elements.week;
+      const dateInput = form.elements.date;
+      if (!weekInput || !dateInput) return;
+      const fixedWeekdays = { fundamental: 1, short: 4, long: 5 };
+      let flexibleWeekday = weekdayFromISO(dateInput.value || localISO(new Date()));
+      dateInput.addEventListener('change', () => {
+        flexibleWeekday = weekdayFromISO(dateInput.value);
+      });
+      const syncDate = () => {
+        const week = Number(weekInput.value);
+        if (!Number.isInteger(week) || week < 1) return;
+        dateInput.value = semesterWeekDate(week, fixedWeekdays[type] || flexibleWeekday);
+      };
+      weekInput.addEventListener('input', syncDate);
+      weekInput.addEventListener('change', syncDate);
     }
 
     form.addEventListener('submit', event => {
@@ -1188,6 +1385,10 @@
         const record = {...values, sessions:Number(values.sessions)};
         if (id) Object.assign(data.groups.find(x => x.id === String(id)), record);
         else data.groups.push({...record, id:nextGroupId()});
+      } else if (type === 'fundamental') {
+        const record = {...values, week:Number(values.week)};
+        if (id) Object.assign(data.fundamentalTalks.find(x => x.id === Number(id)), record);
+        else data.fundamentalTalks.push({...record, id:Date.now()});
       } else if (type === 'short') {
         const record = {...values, week:Number(values.week)};
         if (id) Object.assign(data.shortTalks.find(x => x.id === Number(id)), record);
@@ -1216,6 +1417,7 @@
       }
       if (!confirm('确认删除这条记录吗？')) return;
       if (type === 'member') data.members = data.members.filter(x => x.id !== Number(id));
+      if (type === 'fundamental') data.fundamentalTalks = data.fundamentalTalks.filter(x => x.id !== Number(id));
       if (type === 'short') data.shortTalks = data.shortTalks.filter(x => x.id !== Number(id));
       if (type === 'long') data.longTalks = data.longTalks.filter(x => x.id !== Number(id));
       if (type === 'lecture') data.lectures = data.lectures.filter(x => x.id !== Number(id));
@@ -1231,6 +1433,8 @@
 
     document.addEventListener('click', event => {
       if (!isAdmin) return;
+      const pause = event.target.closest('[data-pause]');
+      if (pause) toggleCurrentWeekPause(pause.dataset.pause);
       const open = event.target.closest('[data-open]');
       if (open) openEditor(open.dataset.open);
       const edit = event.target.closest('[data-edit]');
@@ -1294,7 +1498,7 @@
       register({
         name: 'read_seminar_programme',
         title: '读取讨论班安排',
-        description: '读取当前页面中的学期信息、本周周次、成员、subgroup，以及 Short Talk、Long Talk 和 Lectures 安排。',
+        description: '读取当前页面中的学期信息、本周周次、暂停状态、成员、subgroup，以及 Fundamental、Short Talk、Long Talk 和 Lectures 安排。',
         inputSchema: { type: 'object', properties: {}, additionalProperties: false },
         annotations: { readOnlyHint: true, untrustedContentHint: true },
         execute() {
@@ -1303,6 +1507,64 @@
       });
 
       if (!isAdmin) return;
+
+      register({
+        name: 'set_current_week_pause',
+        title: '设置本周暂停状态',
+        description: '暂停或恢复本周的 Fundamental、Short Talk、Long Talk 或 Lectures；已有排期记录不会被删除。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            category: { type: 'string', enum: ['fundamental', 'short', 'long', 'lecture'] },
+            paused: { type: 'boolean' }
+          },
+          required: ['category', 'paused'],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: false, untrustedContentHint: true },
+        execute(input) {
+          const week = getCurrentWeek();
+          const existing = getPause(input.category, week);
+          if (input.paused && !existing) data.pauses.push({ id: Date.now(), week, category: input.category });
+          if (!input.paused && existing) data.pauses = data.pauses.filter(item => item !== existing);
+          saveData(`${categoryLabels[input.category]} 本周状态已更新`);
+          return { status: input.paused ? 'paused' : 'active', week, category: input.category };
+        }
+      });
+
+      register({
+        name: 'add_fundamental_talk',
+        title: '添加 Fundamental',
+        description: '添加一次专业方向教材或专著的 Fundamental 讲解，并立即更新页面。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            week: { type: 'integer', minimum: 1 },
+            date: { type: 'string' },
+            speaker: { type: 'string' },
+            book: { type: 'string' },
+            title: { type: 'string' },
+            location: { type: 'string' }
+          },
+          required: ['week', 'date', 'speaker', 'book', 'title', 'location'],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: false, untrustedContentHint: true },
+        execute(input) {
+          const record = {
+            id: Date.now(),
+            week: requiredWeek(input.week),
+            date: requiredText(input.date, 'date'),
+            speaker: requiredText(input.speaker, 'speaker'),
+            book: requiredText(input.book, 'book'),
+            title: requiredText(input.title, 'title'),
+            location: requiredText(input.location, 'location')
+          };
+          data.fundamentalTalks.push(record);
+          saveData('已由助手添加 Fundamental');
+          return { status: 'created', id: record.id, week: record.week, speaker: record.speaker };
+        }
+      });
 
       register({
         name: 'add_short_talk',
