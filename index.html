@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="纯数学课题组 Seminar 的 Short Talk、Long Talk、Lectures 与本周活动排期工作台。">
+  <title>Pure Mathematics Seminar</title>
+  <style>
+    :root {
+      --ink: #17212e;
+      --muted: #667080;
+      --paper: #f4f2ed;
+      --panel: #fffefb;
+      --navy: #152a46;
+      --blue: #2e5f8a;
+      --teal: #1f766d;
+      --rust: #a24d2d;
+      --line: #d8d6cf;
+      --line-dark: #bcc4cc;
+      --soft-blue: #e7eef5;
+      --soft-teal: #e4f0ed;
+      --soft-rust: #f5e9e3;
+      --shadow: 0 18px 55px rgba(21, 42, 70, .09);
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(rgba(21, 42, 70, .027) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(21, 42, 70, .027) 1px, transparent 1px),
+        var(--paper);
+      background-size: 28px 28px;
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans SC", sans-serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    a { color: inherit; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(216, 214, 207, .9);
+      background: rgba(244, 242, 237, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .topbar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      min-height: 66px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-right: auto;
+      text-decoration: none;
+      font-family: Georgia, "Noto Serif SC", serif;
+      font-weight: 700;
+      letter-spacing: -.01em;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      color: white;
+      background: var(--navy);
+      border-radius: 50%;
+      font-size: 15px;
+    }
+
+    nav { display: flex; align-items: center; gap: 6px; }
+    nav a {
+      padding: 8px 10px;
+      color: var(--muted);
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: .92rem;
+      font-weight: 650;
+    }
+    nav a:hover, nav a:focus-visible { color: var(--navy); background: white; outline: none; }
+
+    .container { max-width: 1240px; margin: 0 auto; padding: 34px 28px 80px; }
+
+    .overview { margin-bottom: 22px; }
+
+    .masthead {
+      position: relative;
+      overflow: hidden;
+      min-height: 270px;
+      padding: 34px 36px;
+      border-radius: 20px;
+      color: white;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+    }
+
+    .masthead::after {
+      content: "∫";
+      position: absolute;
+      right: 28px;
+      bottom: -75px;
+      color: rgba(255,255,255,.055);
+      font-family: Georgia, serif;
+      font-size: 270px;
+      line-height: 1;
+      transform: rotate(8deg);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #a9d3cc;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { font-family: Georgia, "Noto Serif SC", serif; }
+    h1 {
+      max-width: 720px;
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4.25rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+    }
+
+    .term-title {
+      margin: 17px 0 27px;
+      color: rgba(255,255,255,.78);
+      font-size: 1.02rem;
+    }
+
+    .meta-row { position: relative; z-index: 1; display: flex; flex-wrap: wrap; gap: 10px; }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 12px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: rgba(255,255,255,.92);
+      font-size: .9rem;
+    }
+
+    .meta-chip svg, .button svg, .icon-button svg { width: 17px; height: 17px; flex: 0 0 auto; }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 14px;
+      border: 1px solid var(--navy);
+      border-radius: 9px;
+      background: var(--navy);
+      color: white;
+      font-weight: 720;
+    }
+    .button:hover { background: #203b5e; }
+    .button.secondary { color: var(--navy); background: transparent; border-color: var(--line-dark); }
+    .button.secondary:hover { background: var(--soft-blue); }
+    .button.ghost { color: var(--muted); background: transparent; border-color: transparent; }
+    .button.ghost:hover { color: var(--navy); background: var(--soft-blue); }
+    .button.small { min-height: 36px; padding: 7px 11px; font-size: .87rem; }
+    .button.danger { color: #8c321f; background: white; border-color: #d7a18f; }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 16px 18px;
+      margin-bottom: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,254,251,.88);
+    }
+    .toolbar-note { color: var(--muted); font-size: .9rem; }
+    .toolbar-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .weekly-agenda {
+      padding: 24px;
+      margin: 24px 0 18px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,254,251,.94);
+      box-shadow: var(--shadow);
+    }
+    .weekly-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .weekly-heading { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
+    .weekly-heading h2 { font-size: clamp(1.45rem, 3vw, 1.85rem); }
+    .week-badge { padding: 5px 10px; border-radius: 999px; color: #214f76; background: var(--soft-blue); font-size: .78rem; font-weight: 850; }
+    .weekly-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 18px; }
+    .weekly-module { min-width: 0; padding: 17px; border: 1px solid var(--line); border-top: 4px solid var(--blue); border-radius: 11px; background: white; }
+    .weekly-module.long { border-top-color: var(--teal); }
+    .weekly-module.lecture { border-top-color: var(--rust); }
+    .weekly-module-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .weekly-module-head h3 { margin: 0; color: var(--navy); font-size: 1.04rem; }
+    .weekly-count { color: var(--muted); font-size: .74rem; font-weight: 750; }
+    .weekly-event { padding: 11px 0; border-top: 1px solid #ebe8e1; }
+    .weekly-event:first-of-type { padding-top: 0; border-top: 0; }
+    .weekly-date { display: block; margin-bottom: 3px; color: var(--muted); font-size: .76rem; font-weight: 760; }
+    .weekly-title { display: block; color: var(--ink); font-size: .9rem; font-weight: 720; overflow-wrap: anywhere; }
+    .weekly-meta { display: block; margin-top: 4px; color: var(--muted); font-size: .77rem; }
+    .weekly-empty { padding: 18px 0 4px; color: var(--muted); font-size: .86rem; }
+
+    .section { scroll-margin-top: 84px; margin-top: 46px; }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 13px;
+      border-bottom: 2px solid var(--navy);
+    }
+    .section-kicker { margin: 0 0 3px; color: var(--rust); font-size: .76rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 0; color: var(--navy); font-size: clamp(1.55rem, 3vw, 2rem); letter-spacing: -.025em; }
+    .section-description { max-width: 640px; margin: 9px 0 0; color: var(--muted); font-size: .93rem; }
+    .section-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+
+    .track-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 18px; }
+    .track-card { padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .track-card.short { border-top: 4px solid var(--blue); }
+    .track-card.long { border-top: 4px solid var(--teal); }
+    .track-top { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+    .track-card h3 { margin: 0 0 6px; color: var(--navy); font-size: 1.3rem; }
+    .track-card p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .tag { padding: 5px 9px; border-radius: 999px; white-space: nowrap; font-size: .76rem; font-weight: 800; }
+    .tag.blue { color: #214f76; background: var(--soft-blue); }
+    .tag.teal { color: #185e57; background: var(--soft-teal); }
+    .track-copy { display: grid; gap: 17px; margin-top: 22px; }
+    .track-block { padding-top: 15px; border-top: 1px solid #e4e1da; }
+    .track-label { display: block; margin-bottom: 7px; color: var(--navy); font-size: .8rem; font-weight: 850; letter-spacing: .09em; text-transform: uppercase; }
+    .track-list { margin: 0; padding-left: 1.15rem; color: #495567; font-size: .9rem; }
+    .track-list li + li { margin-top: 6px; }
+    .track-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 22px; }
+    .track-detail { padding: 11px 10px; border-left: 2px solid var(--line-dark); }
+    .track-detail b { display: block; color: var(--navy); font-family: Georgia, serif; font-size: 1.15rem; }
+    .track-detail span { color: var(--muted); font-size: .76rem; }
+
+    .schedule-shell { margin-top: 18px; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .schedule-row {
+      display: grid;
+      grid-template-columns: 88px 134px minmax(140px, .7fr) minmax(240px, 1.55fr) 104px;
+      gap: 14px;
+      align-items: center;
+      min-height: 76px;
+      padding: 13px 17px;
+      border-bottom: 1px solid #e7e4dd;
+    }
+    .schedule-row:last-child { border-bottom: 0; }
+    .schedule-row.header { min-height: 44px; color: var(--muted); background: #f0eee8; font-size: .75rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+    .week { color: var(--navy); font-family: Georgia, serif; font-weight: 700; }
+    .date { color: var(--muted); font-size: .88rem; }
+    .speaker { font-weight: 750; }
+    .topic { min-width: 0; }
+    .topic-title { display: block; color: var(--ink); font-weight: 680; overflow-wrap: anywhere; }
+    .topic-meta { display: block; margin-top: 2px; color: var(--muted); font-size: .8rem; }
+    .pending { color: #8a735f; font-style: italic; font-weight: 600; }
+    .row-actions { display: flex; justify-content: flex-end; gap: 5px; }
+    .icon-button {
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      color: var(--muted);
+      background: transparent;
+    }
+    .icon-button:hover, .icon-button:focus-visible { color: var(--navy); border-color: var(--line); background: var(--soft-blue); outline: none; }
+
+    .groups-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 18px; }
+    .group-card { min-height: 210px; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+    .group-index { color: var(--teal); font-size: .74rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+    .group-card h3 { margin: 9px 0 7px; color: var(--navy); font-size: 1.16rem; }
+    .paper-title { min-height: 54px; margin: 0 0 17px !important; color: var(--ink) !important; font-size: .88rem !important; }
+    .member-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .member-pill { padding: 5px 8px; border: 1px solid #cad5d2; border-radius: 999px; color: #315f59; background: var(--soft-teal); font-size: .76rem; font-weight: 700; }
+    .group-foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 20px; padding-top: 13px; border-top: 1px solid #e7e4dd; color: var(--muted); font-size: .78rem; }
+
+    .members-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 18px; }
+    .member-card { display: flex; align-items: center; gap: 13px; padding: 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); }
+    .avatar { width: 43px; height: 43px; display: grid; flex: 0 0 auto; place-items: center; border-radius: 50%; color: white; background: var(--navy); font-family: Georgia, serif; font-weight: 700; }
+    .member-info { min-width: 0; flex: 1; }
+    .member-name { display: block; font-weight: 760; }
+    .member-area { display: block; color: var(--muted); font-size: .8rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+    .empty-state { padding: 30px; color: var(--muted); text-align: center; }
+
+    footer { margin-top: 54px; padding-top: 19px; border-top: 1px solid var(--line-dark); display: flex; justify-content: space-between; gap: 20px; color: var(--muted); font-size: .82rem; }
+
+    dialog {
+      width: min(620px, calc(100vw - 28px));
+      max-height: calc(100vh - 36px);
+      padding: 0;
+      border: 0;
+      border-radius: 17px;
+      color: var(--ink);
+      background: var(--panel);
+      box-shadow: 0 28px 90px rgba(12, 30, 53, .28);
+    }
+    dialog::backdrop { background: rgba(16, 30, 48, .54); backdrop-filter: blur(3px); }
+    .dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; padding: 23px 25px 16px; border-bottom: 1px solid var(--line); }
+    .dialog-head h3 { margin: 0; color: var(--navy); font-size: 1.35rem; }
+    .dialog-head p { margin: 4px 0 0; color: var(--muted); font-size: .86rem; }
+    .dialog-body { padding: 20px 25px 25px; overflow-y: auto; }
+    .close-button { width: 36px; height: 36px; border: 0; border-radius: 50%; color: var(--muted); background: #efede7; font-size: 1.25rem; }
+    .field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field.full { grid-column: 1 / -1; }
+    label { color: var(--navy); font-size: .84rem; font-weight: 760; }
+    input, select, textarea {
+      width: 100%;
+      min-height: 43px;
+      padding: 9px 11px;
+      border: 1px solid var(--line-dark);
+      border-radius: 8px;
+      color: var(--ink);
+      background: white;
+    }
+    textarea { min-height: 86px; resize: vertical; }
+    input:focus, select:focus, textarea:focus { border-color: var(--blue); outline: 3px solid rgba(46,95,138,.14); }
+    .form-actions { display: flex; justify-content: space-between; gap: 10px; margin-top: 22px; }
+    .form-actions-right { display: flex; gap: 8px; margin-left: auto; }
+
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 50;
+      max-width: min(360px, calc(100vw - 44px));
+      padding: 12px 15px;
+      border-radius: 10px;
+      color: white;
+      background: var(--navy);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+      transition: .2s ease;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .groups-grid { grid-template-columns: 1fr 1fr; }
+      .members-grid { grid-template-columns: 1fr 1fr; }
+      .weekly-grid { grid-template-columns: 1fr; }
+      .schedule-row { grid-template-columns: 68px 110px 130px minmax(200px, 1fr) 80px; gap: 10px; }
+      nav a:nth-child(1), nav a:nth-child(5) { display: none; }
+    }
+
+    @media (max-width: 700px) {
+      .topbar-inner, .container { padding-left: 17px; padding-right: 17px; }
+      .brand span:last-child { display: none; }
+      nav { gap: 0; }
+      nav a { padding: 8px; font-size: .82rem; }
+      .masthead { min-height: 300px; padding: 29px 24px; }
+      .toolbar, .weekly-head, .section-head, footer { align-items: stretch; flex-direction: column; }
+      .toolbar-actions { display: grid; grid-template-columns: 1fr 1fr; }
+      .track-grid, .groups-grid, .members-grid { grid-template-columns: 1fr; }
+      .track-details { grid-template-columns: 1fr 1fr 1fr; }
+      .schedule-shell { border: 0; background: transparent; overflow: visible; }
+      .schedule-row.header { display: none; }
+      .schedule-row {
+        position: relative;
+        grid-template-columns: 68px 1fr;
+        gap: 5px 10px;
+        margin-bottom: 10px;
+        padding: 15px 50px 15px 15px;
+        border: 1px solid var(--line);
+        border-radius: 11px;
+        background: var(--panel);
+      }
+      .schedule-row > .week { grid-row: 1 / span 3; }
+      .schedule-row > .date { grid-column: 2; }
+      .schedule-row > .speaker { grid-column: 2; }
+      .schedule-row > .topic { grid-column: 2; margin-top: 5px; }
+      .row-actions { position: absolute; top: 10px; right: 8px; flex-direction: column; }
+      .field-grid { grid-template-columns: 1fr; }
+      .field.full { grid-column: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#overview" aria-label="返回概览">
+        <span class="brand-mark">PM</span>
+        <span>Pure Mathematics Seminar</span>
+      </a>
+      <nav aria-label="页面导航">
+        <a href="#overview">概览</a>
+        <a href="#short-talks">Short Talks</a>
+        <a href="#long-talks">Long Talks</a>
+        <a href="#lectures">Lectures</a>
+        <a href="#members">成员</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="overview" id="overview">
+      <div class="masthead">
+        <p class="eyebrow">Seminar Programme</p>
+        <h1>Pure Mathematics<br>Seminar</h1>
+        <p class="term-title" id="termLabel">2026 秋季学期 · 排期草案</p>
+        <div class="meta-row">
+          <span class="meta-chip" id="shortTimeChip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            Short Talk · 周四 14:00–17:00
+          </span>
+          <span class="meta-chip" id="longTimeChip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 19V8l8-4 8 4v11"/><path d="M8 19v-6h8v6M3 20h18"/></svg>
+            Long Talk · 周五 14:00–16:00
+          </span>
+          <span class="meta-chip" id="locationChip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            地点以每次安排为准
+          </span>
+          <span class="meta-chip" id="teachingWeeksChip">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4m8-4v4M4 10h16"/></svg>
+            18 个教学周
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="weekly-agenda" aria-labelledby="weekly-title">
+      <div class="weekly-head">
+        <div>
+          <p class="section-kicker">This week</p>
+          <div class="weekly-heading">
+            <h2 id="weekly-title">本周学术活动总览</h2>
+            <span class="week-badge" id="currentWeekLabel">Week 1</span>
+          </div>
+        </div>
+        <button class="button secondary small" data-open="semester">学期设置</button>
+      </div>
+      <div class="weekly-grid" id="weeklyOverview"></div>
+    </section>
+
+    <div class="toolbar" aria-label="快速编辑">
+      <span class="toolbar-note">示例排期可直接修改；更改会保留在当前浏览器中。</span>
+      <div class="toolbar-actions">
+        <button class="button secondary small" data-open="semester">学期设置</button>
+        <button class="button secondary small" data-open="settings">编辑时间地点</button>
+        <button class="button secondary small" data-open="member">添加成员</button>
+        <button class="button small" data-open="short">安排 Short Talk</button>
+        <button class="button small" data-open="long">安排 Long Talk</button>
+        <button class="button small" data-open="lecture">记录 Lecture</button>
+      </div>
+    </div>
+
+    <section class="section" aria-labelledby="format-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Two-track format</p>
+          <h2 id="format-title">两条互补的报告轨道</h2>
+          <p class="section-description">Short Talk 服务于全组范围内的快速交流，Long Talk 服务于方向小组内部的系统研读；两者分别承担“拓展广度”和“建立深度”的任务。</p>
+        </div>
+      </div>
+      <div class="track-grid">
+        <article class="track-card short">
+          <div class="track-top">
+            <div><h3>Short Talk</h3><p>Quick paper review / research progress</p></div>
+            <span class="tag blue">全组参加</span>
+          </div>
+          <div class="track-copy">
+            <div class="track-block">
+              <span class="track-label">形式</span>
+              <ul class="track-list">
+                <li>每次安排三位报告人，每人一小时，其中建议报告 45–50 分钟、讨论 10–15 分钟。</li>
+                <li>每个报告相对独立，内容可以是对一篇感兴趣论文的快速梳理，也可以是本人近期研究进展、困难或开放问题。</li>
+              </ul>
+            </div>
+            <div class="track-block">
+              <span class="track-label">目标</span>
+              <ul class="track-list">
+                <li>让全组及时了解不同方向的新论文、新方法和成员的研究动态。</li>
+                <li>训练在有限时间内说明问题背景、主要结果、核心思路及值得讨论之处的能力。</li>
+                <li>发现适合进一步研读、合作或发展为研究问题的主题。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="track-details">
+            <div class="track-detail"><b>3</b><span>speakers / week</span></div>
+            <div class="track-detail"><b>1h</b><span>per speaker</span></div>
+            <div class="track-detail"><b>42–45</b><span>talk slots</span></div>
+          </div>
+        </article>
+        <article class="track-card long">
+          <div class="track-top">
+            <div><h3>Long Talk</h3><p>Collaborative reading of one selected paper</p></div>
+            <span class="tag teal"><span id="groupCountTag">4</span> subgroups</span>
+          </div>
+          <div class="track-copy">
+            <div class="track-block">
+              <span class="track-label">形式</span>
+              <ul class="track-list">
+                <li>成员按研究方向组成若干 subgroup，每组共同选择一篇具有代表性或基础价值的 selected paper。</li>
+                <li>每篇论文原则上使用 3–4 次报告连续讲解，并按数学结构分为背景与主定理、核心证明、技术细节以及总结讨论。</li>
+                <li>全组成员阅读整篇论文，每次由一人主讲，其他成员负责补充、核验和讨论，而非简单按页数分工。</li>
+              </ul>
+            </div>
+            <div class="track-block">
+              <span class="track-label">目标</span>
+              <ul class="track-list">
+                <li>完整掌握论文的问题设置、假设、主要定理、证明架构与关键工具。</li>
+                <li>为 subgroup 建立共同的方向背景、术语体系和可复用的研读笔记。</li>
+                <li>辨认原论文的关键限制、可能推广及能够继续追踪的研究问题。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="track-details">
+            <div class="track-detail"><b>3–4</b><span>sessions / paper</span></div>
+            <div class="track-detail"><b>13–14</b><span>weeks</span></div>
+            <div class="track-detail"><b>1</b><span>shared paper / group</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="short-talks" aria-labelledby="short-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Weekly programme</p>
+          <h2 id="short-title">Short Talks</h2>
+          <p class="section-description">每位报告人原则上使用 45–50 分钟报告，预留 10–15 分钟讨论。下表展示示例场次与待安排入口。</p>
+        </div>
+        <button class="button" data-open="short">＋ 新增报告</button>
+      </div>
+      <div class="schedule-shell" id="shortSchedule"></div>
+    </section>
+
+    <section class="section" id="long-talks" aria-labelledby="long-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Reading programme</p>
+          <h2 id="long-title">Long Talks</h2>
+          <p class="section-description">每组共同阅读整篇论文，再按背景与框架、核心论证、技术细节和总结讨论划分报告。</p>
+        </div>
+        <div class="section-actions">
+          <button class="button secondary" data-open="group">＋ 新增 subgroup</button>
+          <button class="button" data-open="long">＋ 新增场次</button>
+        </div>
+      </div>
+      <div class="groups-grid" id="groupsGrid"></div>
+      <div class="schedule-shell" id="longSchedule"></div>
+    </section>
+
+    <section class="section" id="lectures" aria-labelledby="lectures-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">Academic events</p>
+          <h2 id="lectures-title">Lectures</h2>
+          <p class="section-description">记录本组计划参加的校内外学术报告、Colloquium、Workshop talk 等活动；时间、报告人、题目与地点均可独立填写和修改。</p>
+        </div>
+        <button class="button" data-open="lecture">＋ 记录报告</button>
+      </div>
+      <div class="schedule-shell" id="lectureSchedule"></div>
+    </section>
+
+    <section class="section" id="members" aria-labelledby="members-title">
+      <div class="section-head">
+        <div>
+          <p class="section-kicker">People & directions</p>
+          <h2 id="members-title">成员与研究方向</h2>
+          <p class="section-description">示例成员仅用于展示排版。可逐一修改姓名、身份、研究方向和所属 subgroup。</p>
+        </div>
+        <button class="button" data-open="member">＋ 添加成员</button>
+      </div>
+      <div class="members-grid" id="membersGrid"></div>
+    </section>
+
+    <footer>
+      <span>Pure Mathematics Seminar · Internal programme</span>
+      <button class="button ghost small" id="resetExamples">恢复示例数据</button>
+    </footer>
+  </main>
+
+  <dialog id="editorDialog" aria-labelledby="dialogTitle">
+    <div class="dialog-head">
+      <div><h3 id="dialogTitle">编辑</h3><p id="dialogHint"></p></div>
+      <button class="close-button" type="button" aria-label="关闭">×</button>
+    </div>
+    <div class="dialog-body">
+      <form id="editorForm"></form>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const icons = {
+      edit: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m14 5 5 5M4 20l4.3-1 10-10a2.1 2.1 0 0 0-3-3l-10 10L4 20Z"/></svg>',
+      trash: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M9 7V4h6v3m3 0-1 13H7L6 7m4 4v5m4-5v5"/></svg>'
+    };
+
+    const exampleData = {
+      settings: {
+        term: '2026 秋季学期 · 排期草案',
+        shortTime: '周四 14:00–17:00',
+        longTime: '周五 14:00–16:00',
+        location: '地点以每次安排为准',
+        firstWeekStart: '2026-09-07',
+        teachingWeeks: 18,
+        currentWeek: 1,
+        shortWeeks: 15,
+        longWeeks: 14
+      },
+      members: [
+        { id: 1, name: '陈同学', role: 'Postdoc', area: 'Elliptic PDE', group: 'A' },
+        { id: 2, name: '林同学', role: 'PhD', area: 'Geometric Analysis', group: 'A' },
+        { id: 3, name: '周同学', role: 'PhD', area: 'Harmonic Analysis', group: 'A' },
+        { id: 4, name: '王同学', role: 'Postdoc', area: 'Calculus of Variations', group: 'B' },
+        { id: 5, name: '李同学', role: 'PhD', area: 'Free Boundary Problems', group: 'B' },
+        { id: 6, name: '赵同学', role: 'Master', area: 'Nonlinear PDE', group: 'B' },
+        { id: 7, name: '杨同学', role: 'PhD', area: 'Subelliptic Equations', group: 'C' },
+        { id: 8, name: '吴同学', role: 'PhD', area: 'Carnot Groups', group: 'C' },
+        { id: 9, name: '黄同学', role: 'Master', area: 'Metric Measure Spaces', group: 'C' },
+        { id: 10, name: '许同学', role: 'PhD', area: 'Probability & Analysis', group: 'D' },
+        { id: 11, name: '孙同学', role: 'Master', area: 'Random Walk Spaces', group: 'D' }
+      ],
+      groups: [
+        { id: 'A', direction: 'Elliptic & Geometric PDE', paper: 'Stable solutions and geometric inequalities', sessions: 4 },
+        { id: 'B', direction: 'Variational & Free Boundary', paper: 'A selected paper on one-phase free boundaries', sessions: 4 },
+        { id: 'C', direction: 'Subelliptic Analysis', paper: 'Regularity theory on Carnot groups', sessions: 3 },
+        { id: 'D', direction: 'Metric Spaces & Diffusion', paper: 'Variational problems in random walk spaces', sessions: 3 }
+      ],
+      shortTalks: [
+        { id: 101, week: 1, date: '2026-09-10', speaker: '陈同学', title: 'A quick review of a recent elliptic PDE paper', type: 'Paper review', location: '数学楼 401' },
+        { id: 102, week: 1, date: '2026-09-10', speaker: '王同学', title: 'Recent progress on a variational problem', type: 'Research progress', location: '数学楼 401' },
+        { id: 103, week: 1, date: '2026-09-10', speaker: '杨同学', title: 'An introduction to stable solutions on Carnot groups', type: 'Paper review', location: '数学楼 401' },
+        { id: 104, week: 2, date: '2026-09-17', speaker: '林同学', title: 'Geometric flows and weak formulations', type: 'Paper review', location: '数学楼 305' },
+        { id: 105, week: 2, date: '2026-09-17', speaker: '待安排', title: '', type: '', location: '地点待定' },
+        { id: 106, week: 2, date: '2026-09-17', speaker: '待安排', title: '', type: '', location: '地点待定' }
+      ],
+      longTalks: [
+        { id: 201, week: 1, date: '2026-09-11', group: 'A', speaker: '林同学', title: 'Background, main theorem and proof architecture', location: '数学楼 401' },
+        { id: 202, week: 2, date: '2026-09-18', group: 'A', speaker: '陈同学', title: 'Core estimates and stability inequality', location: '数学楼 305' },
+        { id: 203, week: 3, date: '2026-09-25', group: 'A', speaker: '周同学', title: 'Completion of the proof and discussion', location: '地点待定' },
+        { id: 204, week: 4, date: '2026-10-02', group: 'B', speaker: '王同学', title: 'Problem setting and variational framework', location: '数学楼 401' },
+        { id: 205, week: 5, date: '2026-10-09', group: 'B', speaker: '待安排', title: '', location: '地点待定' }
+      ],
+      lectures: [
+        { id: 301, week: 1, date: '2026-09-10', time: '10:00–11:00', speaker: '张教授（示例）', affiliation: '示例大学', title: 'A Sample Departmental Colloquium', location: '数学楼报告厅' },
+        { id: 302, week: 2, date: '2026-09-16', time: '15:00–16:00', speaker: '李教授（示例）', affiliation: '示例研究所', title: 'An Example Lecture in Geometric Analysis', location: '地点待定' }
+      ]
+    };
+
+    const clone = value => JSON.parse(JSON.stringify(value));
+    let data = loadData();
+    let editorState = { type: null, id: null };
+
+    const dialog = document.getElementById('editorDialog');
+    const form = document.getElementById('editorForm');
+    const dialogTitle = document.getElementById('dialogTitle');
+    const dialogHint = document.getElementById('dialogHint');
+    const toast = document.getElementById('toast');
+
+    function normalizeData(savedData) {
+      const base = clone(exampleData);
+      const saved = savedData && typeof savedData === 'object' ? savedData : {};
+      const settings = {...base.settings, ...(saved.settings || {})};
+      if (settings.shortTime === '周二 14:00–17:00') settings.shortTime = base.settings.shortTime;
+      return {
+        ...base,
+        ...saved,
+        settings,
+        members: Array.isArray(saved.members) ? saved.members : base.members,
+        groups: Array.isArray(saved.groups) ? saved.groups : base.groups,
+        shortTalks: Array.isArray(saved.shortTalks) ? saved.shortTalks : base.shortTalks,
+        longTalks: Array.isArray(saved.longTalks) ? saved.longTalks : base.longTalks,
+        lectures: Array.isArray(saved.lectures) ? saved.lectures : base.lectures
+      };
+    }
+
+    function loadData() {
+      try {
+        const saved = localStorage.getItem('pureMathSeminarData');
+        return normalizeData(saved ? JSON.parse(saved) : null);
+      } catch (_) {
+        return clone(exampleData);
+      }
+    }
+
+    function saveData(message = '已保存') {
+      localStorage.setItem('pureMathSeminarData', JSON.stringify(data));
+      render();
+      showToast(message);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(showToast.timer);
+      showToast.timer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    function escapeHTML(value = '') {
+      return String(value).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    }
+
+    function isKnown(value, placeholders = []) {
+      const text = String(value ?? '').trim();
+      return Boolean(text) && !placeholders.includes(text);
+    }
+
+    function displayPart(value, fallback, placeholders = []) {
+      const known = isKnown(value, placeholders);
+      return `<span class="${known ? '' : 'pending'}">${escapeHTML(known ? value : fallback)}</span>`;
+    }
+
+    function localISO(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
+    function thisWeekDate(targetDay) {
+      const today = new Date();
+      const mondayIndex = (today.getDay() + 6) % 7;
+      const targetIndex = targetDay - 1;
+      const result = new Date(today);
+      result.setDate(today.getDate() + targetIndex - mondayIndex);
+      return localISO(result);
+    }
+
+    function getCurrentWeek() {
+      const start = String(data.settings.firstWeekStart || '');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(start)) return Number(data.settings.currentWeek || 1);
+      const [year, month, day] = start.split('-').map(Number);
+      const startUTC = Date.UTC(year, month - 1, day);
+      const today = new Date();
+      const todayUTC = Date.UTC(today.getFullYear(), today.getMonth(), today.getDate());
+      const week = Math.floor((todayUTC - startUTC) / 604800000) + 1;
+      const total = Number(data.settings.teachingWeeks || 1);
+      return week >= 1 && week <= total ? week : Number(data.settings.currentWeek || 1);
+    }
+
+    function semesterWeekDate(week, weekday) {
+      const start = String(data.settings.firstWeekStart || '');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(start)) return thisWeekDate(weekday);
+      const [year, month, day] = start.split('-').map(Number);
+      const result = new Date(year, month - 1, day);
+      result.setDate(result.getDate() + (Number(week) - 1) * 7 + weekday - 1);
+      return localISO(result);
+    }
+
+    function toDateInputValue(value) {
+      const text = String(value || '').trim();
+      if (/^\d{4}-\d{2}-\d{2}$/.test(text)) return text;
+      const match = text.match(/^(\d{1,2})\s*\/\s*(\d{1,2})$/);
+      if (!match) return '';
+      return `${new Date().getFullYear()}-${match[1].padStart(2, '0')}-${match[2].padStart(2, '0')}`;
+    }
+
+    function formatDate(value) {
+      const text = String(value || '').trim();
+      const match = text.match(/^\d{4}-(\d{2})-(\d{2})$/);
+      return match ? `${match[1]} / ${match[2]}` : (text || '日期待定');
+    }
+
+    function initials(name) {
+      const clean = name.replace(/同学|老师|博士/g, '').trim();
+      return clean ? clean.slice(0, 2).toUpperCase() : '?';
+    }
+
+    function render() {
+      const s = data.settings;
+      document.getElementById('termLabel').textContent = s.term;
+      document.getElementById('shortTimeChip').lastChild.textContent = ' Short Talk · ' + s.shortTime;
+      document.getElementById('longTimeChip').lastChild.textContent = ' Long Talk · ' + s.longTime;
+      document.getElementById('locationChip').lastChild.textContent = ' ' + s.location;
+      document.getElementById('teachingWeeksChip').lastChild.textContent = ` ${s.teachingWeeks} 个教学周`;
+      document.getElementById('groupCountTag').textContent = data.groups.length;
+      document.getElementById('currentWeekLabel').textContent = 'Week ' + getCurrentWeek();
+      renderWeeklyOverview();
+      renderShortTalks();
+      renderGroups();
+      renderLongTalks();
+      renderLectures();
+      renderMembers();
+    }
+
+    function scheduleHeader(kind) {
+      return `<div class="schedule-row header"><span>周次</span><span>日期</span><span>${kind === 'long' ? 'Subgroup' : '报告人'}</span><span>报告题目</span><span>操作</span></div>`;
+    }
+
+    function actionButtons(type, id) {
+      return `<div class="row-actions">
+        <button class="icon-button" type="button" data-edit="${type}" data-id="${id}" aria-label="编辑">${icons.edit}</button>
+        <button class="icon-button" type="button" data-delete="${type}" data-id="${id}" aria-label="删除">${icons.trash}</button>
+      </div>`;
+    }
+
+    function renderWeeklyOverview() {
+      const target = document.getElementById('weeklyOverview');
+      const currentWeek = getCurrentWeek();
+      const byWeek = items => [...items]
+        .filter(item => Number(item.week) === currentWeek)
+        .sort((a, b) => String(a.date || '').localeCompare(String(b.date || '')) || a.id - b.id);
+      const module = (title, className, items, renderItem) => `<article class="weekly-module ${className}">
+        <div class="weekly-module-head"><h3>${title}</h3><span class="weekly-count">${items.length} ${items.length === 1 ? 'event' : 'events'}</span></div>
+        ${items.length ? items.map(renderItem).join('') : '<div class="weekly-empty">本周暂无安排</div>'}
+      </article>`;
+
+      const shortItems = byWeek(data.shortTalks);
+      const longItems = byWeek(data.longTalks);
+      const lectureItems = byWeek(data.lectures);
+      target.innerHTML =
+        module('Short Talks', 'short', shortItems, item => `<div class="weekly-event">
+          <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(data.settings.shortTime)}</span>
+          <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '题目待定')}</span>
+          <span class="weekly-meta">${displayPart(item.speaker, '报告人待安排', ['待安排'])} · ${displayPart(item.type, '类型待定')} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
+        </div>`) +
+        module('Long Talks', 'long', longItems, item => `<div class="weekly-event">
+          <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(data.settings.longTime)}</span>
+          <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '题目待定')}</span>
+          <span class="weekly-meta">Group ${escapeHTML(item.group || '—')} · ${displayPart(item.speaker, '报告人待安排', ['待安排'])} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
+        </div>`) +
+        module('Lectures', 'lecture', lectureItems, item => `<div class="weekly-event">
+          <span class="weekly-date">${escapeHTML(formatDate(item.date))} · ${escapeHTML(item.time || '时间待定')}</span>
+          <span class="weekly-title ${isKnown(item.title) ? '' : 'pending'}">${escapeHTML(isKnown(item.title) ? item.title : '题目待定')}</span>
+          <span class="weekly-meta">${displayPart(item.speaker, '报告人待定')} · ${displayPart(item.affiliation, '单位待定')} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
+        </div>`);
+    }
+
+    function renderShortTalks() {
+      const target = document.getElementById('shortSchedule');
+      if (!data.shortTalks.length) {
+        target.innerHTML = '<div class="empty-state">尚未安排 Short Talk。</div>';
+        return;
+      }
+      const rows = [...data.shortTalks].sort((a,b) => a.week - b.week || a.id - b.id).map(t => {
+        const speakerKnown = isKnown(t.speaker, ['待安排']);
+        const titleKnown = isKnown(t.title);
+        return `<div class="schedule-row">
+          <span class="week">Week ${escapeHTML(t.week)}</span>
+          <span class="date">${escapeHTML(formatDate(t.date))}</span>
+          <span class="speaker ${speakerKnown ? '' : 'pending'}">${escapeHTML(speakerKnown ? t.speaker : '报告人待安排')}</span>
+          <span class="topic">
+            <span class="topic-title ${titleKnown ? '' : 'pending'}">${escapeHTML(titleKnown ? t.title : '题目待定')}</span>
+            <span class="topic-meta">${displayPart(t.type, '类型待定')} · ${displayPart(t.location, '地点待定', ['地点待定'])}</span>
+          </span>
+          ${actionButtons('short', t.id)}
+        </div>`;
+      }).join('');
+      target.innerHTML = scheduleHeader('short') + rows;
+    }
+
+    function renderGroups() {
+      const target = document.getElementById('groupsGrid');
+      if (!data.groups.length) {
+        target.innerHTML = '<div class="empty-state">尚未建立 subgroup。点击“新增 subgroup”开始分组。</div>';
+        return;
+      }
+      target.innerHTML = data.groups.map(group => {
+        const members = data.members.filter(m => m.group === group.id);
+        return `<article class="group-card">
+          <span class="group-index">Subgroup ${escapeHTML(group.id)}</span>
+          <h3>${escapeHTML(group.direction)}</h3>
+          <p class="paper-title">${escapeHTML(group.paper)}</p>
+          <div class="member-pills">${members.length ? members.map(m => `<span class="member-pill">${escapeHTML(m.name)}</span>`).join('') : '<span class="pending">待分配成员</span>'}</div>
+          <div class="group-foot"><span>${escapeHTML(group.sessions)} sessions</span><button class="button ghost small" data-edit="group" data-id="${escapeHTML(group.id)}">编辑小组</button></div>
+        </article>`;
+      }).join('');
+    }
+
+    function renderLongTalks() {
+      const target = document.getElementById('longSchedule');
+      if (!data.longTalks.length) {
+        target.innerHTML = '<div class="empty-state">尚未安排 Long Talk。</div>';
+        return;
+      }
+      const rows = [...data.longTalks].sort((a,b) => a.week - b.week).map(t => {
+        const group = data.groups.find(g => g.id === t.group);
+        const titleKnown = isKnown(t.title);
+        return `<div class="schedule-row">
+          <span class="week">Week ${escapeHTML(t.week)}</span>
+          <span class="date">${escapeHTML(formatDate(t.date))}</span>
+          <span class="speaker">Group ${escapeHTML(t.group)}</span>
+          <span class="topic">
+            <span class="topic-title ${titleKnown ? '' : 'pending'}">${escapeHTML(titleKnown ? t.title : '题目待定')}</span>
+            <span class="topic-meta">${displayPart(t.speaker, '报告人待安排', ['待安排'])} · ${displayPart(group?.direction, '方向待定')} · ${displayPart(t.location, '地点待定', ['地点待定'])}</span>
+          </span>
+          ${actionButtons('long', t.id)}
+        </div>`;
+      }).join('');
+      target.innerHTML = scheduleHeader('long') + rows;
+    }
+
+    function renderLectures() {
+      const target = document.getElementById('lectureSchedule');
+      if (!data.lectures.length) {
+        target.innerHTML = '<div class="empty-state">尚未记录要参加的学术报告。</div>';
+        return;
+      }
+      const rows = [...data.lectures].sort((a,b) => a.week - b.week || String(a.date || '').localeCompare(String(b.date || ''))).map(item => {
+        const speakerKnown = isKnown(item.speaker);
+        const titleKnown = isKnown(item.title);
+        return `<div class="schedule-row">
+          <span class="week">Week ${escapeHTML(item.week)}</span>
+          <span class="date">${escapeHTML(formatDate(item.date))}</span>
+          <span class="speaker ${speakerKnown ? '' : 'pending'}">${escapeHTML(speakerKnown ? item.speaker : '报告人待定')}</span>
+          <span class="topic">
+            <span class="topic-title ${titleKnown ? '' : 'pending'}">${escapeHTML(titleKnown ? item.title : '题目待定')}</span>
+            <span class="topic-meta">${displayPart(item.time, '时间待定')} · ${displayPart(item.affiliation, '单位待定')} · ${displayPart(item.location, '地点待定', ['地点待定'])}</span>
+          </span>
+          ${actionButtons('lecture', item.id)}
+        </div>`;
+      }).join('');
+      target.innerHTML = scheduleHeader('lecture') + rows;
+    }
+
+    function renderMembers() {
+      const target = document.getElementById('membersGrid');
+      if (!data.members.length) {
+        target.innerHTML = '<div class="empty-state">尚未添加成员。</div>';
+        return;
+      }
+      target.innerHTML = data.members.map(m => `<article class="member-card">
+        <div class="avatar">${escapeHTML(initials(m.name))}</div>
+        <div class="member-info"><span class="member-name">${escapeHTML(m.name)} · ${escapeHTML(m.role || 'PhD')}</span><span class="member-area">${escapeHTML(m.area)} · Group ${escapeHTML(m.group)}</span></div>
+        <button class="icon-button" type="button" data-edit="member" data-id="${m.id}" aria-label="编辑 ${escapeHTML(m.name)}">${icons.edit}</button>
+      </article>`).join('');
+    }
+
+    function field(name, label, value = '', options = {}) {
+      const full = options.full ? ' full' : '';
+      if (options.select) {
+        return `<div class="field${full}"><label for="${name}">${label}</label><select id="${name}" name="${name}" required>${options.select.map(o => `<option value="${escapeHTML(o.value)}" ${String(o.value) === String(value) ? 'selected' : ''}>${escapeHTML(o.label)}</option>`).join('')}</select></div>`;
+      }
+      const tag = options.textarea ? 'textarea' : 'input';
+      const attr = options.textarea ? '' : `type="${options.type || 'text'}"`;
+      const min = options.min !== undefined ? `min="${options.min}"` : '';
+      const content = options.textarea ? escapeHTML(value) : '';
+      const val = options.textarea ? '' : `value="${escapeHTML(value)}"`;
+      return `<div class="field${full}"><label for="${name}">${label}</label><${tag} id="${name}" name="${name}" ${attr} ${val} ${min} ${options.required === false ? '' : 'required'}>${content}</${tag}></div>`;
+    }
+
+    function formButtons(canDelete = false) {
+      return `<div class="form-actions">${canDelete ? '<button class="button danger small" type="button" id="formDelete">删除</button>' : '<span></span>'}<div class="form-actions-right"><button class="button secondary" type="button" id="formCancel">取消</button><button class="button" type="submit">保存</button></div></div>`;
+    }
+
+    function openEditor(type, id = null) {
+      if ((type === 'member' || type === 'long') && !data.groups.length) {
+        showToast('请先新增一个 subgroup');
+        return;
+      }
+      editorState = { type, id };
+      let item;
+      if (type === 'semester') {
+        item = data.settings;
+        dialogTitle.textContent = '学期设置';
+        dialogHint.textContent = '本周周次与新增报告的默认日期将根据第一周起始日期自动计算。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('term', '学期名称', item.term, {full:true})}
+          ${field('firstWeekStart', '第一周起始日期（建议周一）', toDateInputValue(item.firstWeekStart), {type:'date'})}
+          ${field('teachingWeeks', '教学周总数', item.teachingWeeks || 18, {type:'number', min:1})}
+        </div>${formButtons()}`;
+      } else if (type === 'settings') {
+        item = data.settings;
+        dialogTitle.textContent = '编辑活动设置';
+        dialogHint.textContent = '更新两个 Seminar 序列的固定时间、地点说明与预计排期周数。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('shortTime', 'Short Talk 时间', item.shortTime)}
+          ${field('longTime', 'Long Talk 时间', item.longTime)}
+          ${field('location', '地点说明', item.location, {full: true})}
+          ${field('shortWeeks', 'Short Talk 周数', item.shortWeeks, {type:'number', min:1})}
+          ${field('longWeeks', 'Long Talk 周数', item.longWeeks, {type:'number', min:1})}
+        </div>${formButtons()}`;
+      } else if (type === 'member') {
+        item = id ? data.members.find(x => x.id === Number(id)) : {name:'', role:'PhD', area:'', group:data.groups[0]?.id || ''};
+        dialogTitle.textContent = id ? '编辑成员' : '添加成员';
+        dialogHint.textContent = '填写姓名、成员身份、研究方向并分配 subgroup。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('name', '姓名', item.name)}
+          ${field('role', '身份', item.role || 'PhD', {select:[{value:'Postdoc',label:'Postdoc'},{value:'PhD',label:'PhD'},{value:'Master',label:'Master'}]})}
+          ${field('group', 'Subgroup', item.group, {select: data.groups.map(g => ({value:g.id, label:`Group ${g.id} · ${g.direction}`}))})}
+          ${field('area', '研究方向', item.area, {full: true})}
+        </div>${formButtons(Boolean(id))}`;
+      } else if (type === 'group') {
+        item = id ? data.groups.find(x => x.id === String(id)) : {direction:'', paper:'', sessions:3};
+        dialogTitle.textContent = id ? `编辑 Subgroup ${item.id}` : '新增 Subgroup';
+        dialogHint.textContent = id ? '设置方向、selected paper 与预计报告次数。' : '新小组将自动获得一个未使用的编号。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('direction', '研究方向', item.direction, {full:true})}
+          ${field('paper', 'Selected paper', item.paper, {textarea:true, full:true})}
+          ${field('sessions', '报告次数', item.sessions, {type:'number', min:1})}
+        </div>${formButtons(Boolean(id))}`;
+      } else if (type === 'short') {
+        item = id ? data.shortTalks.find(x => x.id === Number(id)) : {week:getCurrentWeek(), date:semesterWeekDate(getCurrentWeek(), 4), speaker:'待安排', title:'', type:'Paper review'};
+        dialogTitle.textContent = id ? '编辑 Short Talk' : '安排 Short Talk';
+        dialogHint.textContent = id ? '修改这场一小时报告的日期与信息。' : '日期已预填为本周四，可直接修改。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('week', '周次', item.week, {type:'number', min:1})}
+          ${field('date', '日期', toDateInputValue(item.date), {type:'date'})}
+          ${field('speaker', '报告人', item.speaker, {select: [{value:'待安排',label:'待安排'}, ...data.members.map(m => ({value:m.name,label:m.name}))]})}
+          ${field('type', '类型', item.type || 'Paper review', {select:[{value:'Paper review',label:'Paper review'},{value:'Research progress',label:'Research progress'},{value:'Problem session',label:'Problem session'}]})}
+          ${field('location', '本次地点', item.location || '地点待定', {full:true})}
+          ${field('title', '报告题目', item.title, {textarea:true, full:true, required:false})}
+        </div>${formButtons(Boolean(id))}`;
+      } else if (type === 'long') {
+        item = id ? data.longTalks.find(x => x.id === Number(id)) : {week:getCurrentWeek(), date:semesterWeekDate(getCurrentWeek(), 5), group:data.groups[0]?.id || '', speaker:'待安排', title:''};
+        dialogTitle.textContent = id ? '编辑 Long Talk' : '安排 Long Talk';
+        dialogHint.textContent = id ? '修改这次 selected paper 连续讲解的日期与信息。' : '日期已预填为本周五，可直接修改。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('week', '周次', item.week, {type:'number', min:1})}
+          ${field('date', '日期', toDateInputValue(item.date), {type:'date'})}
+          ${field('group', 'Subgroup', item.group, {select:data.groups.map(g => ({value:g.id,label:`Group ${g.id} · ${g.direction}`}))})}
+          ${field('speaker', '主讲人', item.speaker, {select:[{value:'待安排',label:'待安排'}, ...data.members.map(m => ({value:m.name,label:m.name}))]})}
+          ${field('location', '本次地点', item.location || '地点待定', {full:true})}
+          ${field('title', '本次讲解内容', item.title, {textarea:true, full:true, required:false})}
+        </div>${formButtons(Boolean(id))}`;
+      } else if (type === 'lecture') {
+        item = id ? data.lectures.find(x => x.id === Number(id)) : {week:getCurrentWeek(), date:localISO(new Date()), time:'', speaker:'', affiliation:'', title:'', location:''};
+        dialogTitle.textContent = id ? '编辑 Lecture' : '记录 Lecture';
+        dialogHint.textContent = '记录准备参加的学术报告；尚未确定的信息可以留空。';
+        form.innerHTML = `<div class="field-grid">
+          ${field('week', '周次', item.week, {type:'number', min:1})}
+          ${field('date', '日期', toDateInputValue(item.date), {type:'date'})}
+          ${field('time', '时间', item.time, {required:false})}
+          ${field('speaker', '报告人', item.speaker, {required:false})}
+          ${field('affiliation', '单位', item.affiliation, {required:false})}
+          ${field('location', '地点', item.location, {required:false})}
+          ${field('title', '报告题目', item.title, {textarea:true, full:true, required:false})}
+        </div>${formButtons(Boolean(id))}`;
+      }
+      bindFormControls();
+      dialog.showModal();
+      setTimeout(() => form.querySelector('input, select, textarea')?.focus(), 0);
+    }
+
+    function bindFormControls() {
+      document.getElementById('formCancel').addEventListener('click', () => dialog.close());
+      const deleteButton = document.getElementById('formDelete');
+      if (deleteButton) deleteButton.addEventListener('click', () => deleteItem(editorState.type, editorState.id));
+    }
+
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const values = Object.fromEntries(new FormData(form).entries());
+      const { type, id } = editorState;
+      if (type === 'semester') {
+        data.settings = {...data.settings, ...values, teachingWeeks:Number(values.teachingWeeks), currentWeek:1};
+      } else if (type === 'settings') {
+        data.settings = {...data.settings, ...values, shortWeeks:Number(values.shortWeeks), longWeeks:Number(values.longWeeks)};
+      } else if (type === 'member') {
+        if (id) Object.assign(data.members.find(x => x.id === Number(id)), values);
+        else data.members.push({...values, id: Date.now()});
+      } else if (type === 'group') {
+        const record = {...values, sessions:Number(values.sessions)};
+        if (id) Object.assign(data.groups.find(x => x.id === String(id)), record);
+        else data.groups.push({...record, id:nextGroupId()});
+      } else if (type === 'short') {
+        const record = {...values, week:Number(values.week)};
+        if (id) Object.assign(data.shortTalks.find(x => x.id === Number(id)), record);
+        else data.shortTalks.push({...record, id:Date.now()});
+      } else if (type === 'long') {
+        const record = {...values, week:Number(values.week)};
+        if (id) Object.assign(data.longTalks.find(x => x.id === Number(id)), record);
+        else data.longTalks.push({...record, id:Date.now()});
+      } else if (type === 'lecture') {
+        const record = {...values, week:Number(values.week)};
+        if (id) Object.assign(data.lectures.find(x => x.id === Number(id)), record);
+        else data.lectures.push({...record, id:Date.now()});
+      }
+      dialog.close();
+      saveData('安排已更新');
+    });
+
+    function deleteItem(type, id) {
+      if (type === 'group') {
+        const hasMembers = data.members.some(x => x.group === String(id));
+        const hasTalks = data.longTalks.some(x => x.group === String(id));
+        if (hasMembers || hasTalks) {
+          alert('这个 subgroup 仍有关联的成员或 Long Talk。请先重新分配或删除相关安排。');
+          return;
+        }
+      }
+      if (!confirm('确认删除这条记录吗？')) return;
+      if (type === 'member') data.members = data.members.filter(x => x.id !== Number(id));
+      if (type === 'short') data.shortTalks = data.shortTalks.filter(x => x.id !== Number(id));
+      if (type === 'long') data.longTalks = data.longTalks.filter(x => x.id !== Number(id));
+      if (type === 'lecture') data.lectures = data.lectures.filter(x => x.id !== Number(id));
+      if (type === 'group') data.groups = data.groups.filter(x => x.id !== String(id));
+      dialog.close();
+      saveData('记录已删除');
+    }
+
+    function nextGroupId() {
+      const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+      return alphabet.find(letter => !data.groups.some(group => group.id === letter)) || `G${data.groups.length + 1}`;
+    }
+
+    document.addEventListener('click', event => {
+      const open = event.target.closest('[data-open]');
+      if (open) openEditor(open.dataset.open);
+      const edit = event.target.closest('[data-edit]');
+      if (edit) openEditor(edit.dataset.edit, edit.dataset.id);
+      const del = event.target.closest('[data-delete]');
+      if (del) deleteItem(del.dataset.delete, del.dataset.id);
+    });
+
+    document.querySelector('.close-button').addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', event => {
+      const rect = dialog.getBoundingClientRect();
+      if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) dialog.close();
+    });
+    document.getElementById('resetExamples').addEventListener('click', () => {
+      if (!confirm('恢复示例数据会覆盖当前浏览器中的修改，是否继续？')) return;
+      data = clone(exampleData);
+      saveData('已恢复示例数据');
+    });
+
+    render();
+
+    function registerAgentTools() {
+      const context = document.modelContext;
+      if (!context?.registerTool) return;
+      const register = tool => {
+        try { Promise.resolve(context.registerTool(tool)).catch(() => {}); } catch (_) {}
+      };
+      const requiredText = (value, name) => {
+        if (typeof value !== 'string' || !value.trim()) throw new Error(`${name} 不能为空`);
+        return value.trim();
+      };
+      const requiredWeek = value => {
+        const week = Number(value);
+        if (!Number.isInteger(week) || week < 1) throw new Error('week 必须是正整数');
+        return week;
+      };
+
+      register({
+        name: 'read_seminar_programme',
+        title: '读取讨论班安排',
+        description: '读取当前页面中的学期信息、本周周次、成员、subgroup，以及 Short Talk、Long Talk 和 Lectures 安排。',
+        inputSchema: { type: 'object', properties: {}, additionalProperties: false },
+        annotations: { readOnlyHint: true, untrustedContentHint: true },
+        execute() {
+          return clone(data);
+        }
+      });
+
+      register({
+        name: 'add_short_talk',
+        title: '添加 Short Talk',
+        description: '向当前讨论班排期添加一场 Short Talk，并立即更新页面。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            week: { type: 'integer', minimum: 1 },
+            date: { type: 'string' },
+            speaker: { type: 'string' },
+            title: { type: 'string' },
+            location: { type: 'string' },
+            type: { type: 'string', enum: ['Paper review', 'Research progress', 'Problem session'] }
+          },
+          required: ['week', 'date', 'speaker', 'title', 'location', 'type'],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: false, untrustedContentHint: true },
+        execute(input) {
+          const record = {
+            id: Date.now(),
+            week: requiredWeek(input.week),
+            date: requiredText(input.date, 'date'),
+            speaker: requiredText(input.speaker, 'speaker'),
+            title: requiredText(input.title, 'title'),
+            location: requiredText(input.location, 'location'),
+            type: requiredText(input.type, 'type')
+          };
+          if (!['Paper review', 'Research progress', 'Problem session'].includes(record.type)) throw new Error('不支持的报告类型');
+          data.shortTalks.push(record);
+          saveData('已由助手添加 Short Talk');
+          return { status: 'created', id: record.id, week: record.week, speaker: record.speaker };
+        }
+      });
+
+      register({
+        name: 'add_long_talk',
+        title: '添加 Long Talk',
+        description: '为指定 subgroup 添加一场 Long Talk，并立即更新页面。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            week: { type: 'integer', minimum: 1 },
+            date: { type: 'string' },
+            group: { type: 'string' },
+            speaker: { type: 'string' },
+            title: { type: 'string' },
+            location: { type: 'string' }
+          },
+          required: ['week', 'date', 'group', 'speaker', 'title', 'location'],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: false, untrustedContentHint: true },
+        execute(input) {
+          const group = requiredText(input.group, 'group');
+          if (!data.groups.some(item => item.id === group)) throw new Error('subgroup 不存在');
+          const record = {
+            id: Date.now(),
+            week: requiredWeek(input.week),
+            date: requiredText(input.date, 'date'),
+            group,
+            speaker: requiredText(input.speaker, 'speaker'),
+            title: requiredText(input.title, 'title'),
+            location: requiredText(input.location, 'location')
+          };
+          data.longTalks.push(record);
+          saveData('已由助手添加 Long Talk');
+          return { status: 'created', id: record.id, week: record.week, group: record.group };
+        }
+      });
+
+      register({
+        name: 'add_lecture',
+        title: '记录 Lecture',
+        description: '记录一场计划参加的学术报告，并立即更新页面与本周活动总览。',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            week: { type: 'integer', minimum: 1 },
+            date: { type: 'string' },
+            time: { type: 'string' },
+            speaker: { type: 'string' },
+            affiliation: { type: 'string' },
+            title: { type: 'string' },
+            location: { type: 'string' }
+          },
+          required: ['week', 'date', 'time', 'speaker', 'affiliation', 'title', 'location'],
+          additionalProperties: false
+        },
+        annotations: { readOnlyHint: false, untrustedContentHint: true },
+        execute(input) {
+          const record = {
+            id: Date.now(),
+            week: requiredWeek(input.week),
+            date: requiredText(input.date, 'date'),
+            time: requiredText(input.time, 'time'),
+            speaker: requiredText(input.speaker, 'speaker'),
+            affiliation: requiredText(input.affiliation, 'affiliation'),
+            title: requiredText(input.title, 'title'),
+            location: requiredText(input.location, 'location')
+          };
+          data.lectures.push(record);
+          saveData('已由助手记录 Lecture');
+          return { status: 'created', id: record.id, week: record.week, title: record.title };
+        }
+      });
+    }
+
+    registerAgentTools();
+  </script>
+</body>
+</html>
