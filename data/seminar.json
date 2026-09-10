@@ -104,15 +104,15 @@
     },
     {
       "id": "C",
-      "direction": "Harmonic analysis",
+      "direction": "Inequalities and stability",
       "paper": "Pending",
-      "sessions": 3
+      "sessions": 4
     },
     {
       "id": "D",
       "direction": "Independent",
       "paper": "Pending\n",
-      "sessions": 3
+      "sessions": 2
     }
   ],
   "shortTalks": [
@@ -133,9 +133,136 @@
       "title": "Beginning-of-Semester Research Updates and Plans",
       "type": "Research progress",
       "location": "后主楼1220"
+    },
+    {
+      "week": 2,
+      "date": "2026-09-17",
+      "speaker": "时荣臻",
+      "type": "Research progress",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789043802152
+    },
+    {
+      "week": 2,
+      "date": "2026-09-17",
+      "speaker": "梁宇栋",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789043848360
+    },
+    {
+      "week": 2,
+      "date": "2026-09-17",
+      "speaker": "温叶培",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789043977319
+    },
+    {
+      "week": 3,
+      "date": "2026-09-24",
+      "speaker": "王乔",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044005138
+    },
+    {
+      "week": 3,
+      "date": "2026-09-24",
+      "speaker": "汤翔宇",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044066166
+    },
+    {
+      "week": 3,
+      "date": "2026-09-24",
+      "speaker": "肖熠扬",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044261434
+    },
+    {
+      "week": 4,
+      "date": "2026-10-01",
+      "speaker": "待安排",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "本周暂停",
+      "id": 1789044424094
+    },
+    {
+      "week": 5,
+      "date": "2026-10-08",
+      "speaker": "郑苏婷",
+      "type": "Paper review",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044744196
     }
   ],
-  "longTalks": [],
+  "longTalks": [
+    {
+      "week": 2,
+      "date": "2026-09-18",
+      "group": "C",
+      "speaker": "孙一兵",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044487690
+    },
+    {
+      "week": 3,
+      "date": "2026-09-25",
+      "group": "C",
+      "speaker": "待安排",
+      "location": "地点待定",
+      "title": "本周暂停",
+      "id": 1789044542925
+    },
+    {
+      "week": 4,
+      "date": "2026-10-02",
+      "group": "C",
+      "speaker": "待安排",
+      "location": "地点待定",
+      "title": "本周暂停\n",
+      "id": 1789044676230
+    },
+    {
+      "week": 5,
+      "date": "2026-10-09",
+      "group": "C",
+      "speaker": "孙一兵",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044706959
+    },
+    {
+      "week": 6,
+      "date": "2026-10-16",
+      "group": "C",
+      "speaker": "孙一兵",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044960189
+    },
+    {
+      "week": 7,
+      "date": "2026-10-23",
+      "group": "C",
+      "speaker": "孙一兵",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789044974610
+    }
+  ],
   "lectures": [
     {
       "week": 1,
