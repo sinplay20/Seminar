@@ -1,6 +1,7 @@
 {
   "settings": {
     "term": "2026-2027学年第一学期",
+    "fundamentalTime": "周一 14:00–17:00",
     "shortTime": "周四 14:00–17:00",
     "longTime": "周五 14:00–16:00",
     "location": "地点以每次安排为准",
@@ -115,6 +116,26 @@
       "sessions": 2
     }
   ],
+  "fundamentalTalks": [
+    {
+      "id": 401,
+      "week": 2,
+      "date": "2026-09-14",
+      "speaker": "时荣臻",
+      "book": "E. H. Lieb & M. Loss, 分析学",
+      "title": "第三章：重排不等式",
+      "location": "地点待定"
+    },
+    {
+      "id": 402,
+      "week": 2,
+      "date": "2026-09-14",
+      "speaker": "汤翔宇",
+      "book": "分形上的几何与分析",
+      "title": "",
+      "location": "地点待定"
+    }
+  ],
   "shortTalks": [
     {
       "id": 101,
@@ -124,15 +145,6 @@
       "title": "Beginning-of-Semester Research Updates and Plans",
       "type": "Research progress",
       "location": "后主楼1124"
-    },
-    {
-      "id": 102,
-      "week": 1,
-      "date": "2026-09-11",
-      "speaker": "待安排",
-      "title": "Beginning-of-Semester Research Updates and Plans",
-      "type": "Research progress",
-      "location": "后主楼1220"
     },
     {
       "week": 2,
@@ -261,6 +273,24 @@
       "location": "地点待定",
       "title": "",
       "id": 1789044974610
+    },
+    {
+      "week": 8,
+      "date": "2026-10-30",
+      "group": "A",
+      "speaker": "待安排",
+      "location": "地点待定",
+      "title": "",
+      "id": 1789106360179
+    },
+    {
+      "week": 1,
+      "date": "2026-09-11",
+      "group": "A",
+      "speaker": "待安排",
+      "location": "后主楼1220",
+      "title": "Beginning-of-Semester Research Updates and Plans\n",
+      "id": 1789106396837
     }
   ],
   "lectures": [
@@ -274,5 +304,6 @@
       "title": "AI时代 我们（也许）应该怎样做研究？",
       "id": 1789010058107
     }
-  ]
+  ],
+  "pauses": []
 }
